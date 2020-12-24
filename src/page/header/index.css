@@ -1,0 +1,27 @@
+.header-box{
+    width: 550px;
+
+    margin-left:20px ;
+}
+.header-box-input{
+    width: 470px;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding-left:40px ;
+    font-size: 26px;
+    color: #fff;
+    background-color: #000;
+   
+    border:2px solid #ddd;
+
+    border-image: -webkit-linear-gradient(rgb(255, 255, 255), rgb(5, 250, 229)) 20 20;
+
+    border-image: -moz-linear-gradient(rgb(115, 255, 87), rgb(68, 3, 248)) 20 20;
+
+    border-image: -o-linear-gradient(#F80, #2ED) 20 20;
+
+    border-image: linear-gradient(#F80, #2ED) 20 20;
+    /* border: 1px solid #eeeeee; */
+
+}

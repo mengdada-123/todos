@@ -1,0 +1,14 @@
+
+.title-box{
+    width: 550px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 48px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    /* border: 1px solid red; */
+    background: linear-gradient(to right, rgb(245, 0, 171),#fff, rgb(0, 255, 191));
+    -webkit-background-clip: text;
+    color: transparent;
+}

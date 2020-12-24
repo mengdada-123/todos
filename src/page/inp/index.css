@@ -1,0 +1,10 @@
+.Inp-box{
+    width: 510px;
+    line-height: 40px;
+    margin-left: 20px;
+    /* border: 1px solid red; */
+}
+.Inp-box-ul{
+    width: 100%;
+    list-style: none;
+}

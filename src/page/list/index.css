@@ -1,0 +1,39 @@
+.List-list{
+    width: 100%;
+    margin-bottom: 2px;
+    list-style: none;
+    
+    border-bottom: 2px solid #fff;
+    border-radius:10px ;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.List-list span{
+    color: #fff;
+    /* background-color: #fff; */
+    margin-left: 30px;
+}
+.List-list-button{
+    display: none;
+    width: 50px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    float: right;
+    outline: none;
+    margin-top: 5px;
+}
+.input-gai{
+    width: 390px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 30px;
+    outline: none;
+}
+.none{
+    display: none;
+}
+.block{
+    display: inline-block;
+}
