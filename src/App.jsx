@@ -8,20 +8,14 @@ import './App.css'
 export default class App extends Component {
   state = {
     todos:[
-      {id:'001',name:'吃饭',done:true},
-      {id:'002',name:'睡觉',done:true},
+      {id:'001',name:'吃饭',done:false},
+      {id:'002',name:'睡觉',done:false},
       {id:'003',name:'打代码',done:false},
       {id:'004',name:'逛街',done:false},
     ],
     type:'All',
     inp:false
   }
-
-  // doubleClickAllone=(inp)=>{
-  //   console.log(inp);
-
-  // }
-
 
   changeType=(type)=>{
     this.setState({type:type})
@@ -80,26 +74,34 @@ activeAir=()=>{
   })
   this.setState({todos2:Air})
 }
+// 双击改变input
+doubleClick =(name,id)=>{
+  const {todos} = this.state
+
+  const idx = todos.findIndex(item => item.id === id);
+  todos.splice(idx,1,{
+    ...todos[idx],
+    name
+  });
+  this.setState({
+    todos
+  });
+}
+
+
 
 logh=()=>{
   const loo = JSON.parse(window.localStorage.getItem('todos'))
-  console.log(loo);
 }
-
 
   render() {
     const {todos} = this.state
     const {type} = this.state
-    const storage = window.localStorage
-    const strjson  = JSON.stringify(todos)
-    storage.setItem('todos',strjson)
-    console.log(storage.setItem);
-
     return (
       <div className='box'>
       <Title login = {this.logh} />
       <Header addtos = {this.addTodo}/>
-      <Inp type={type}  todoss={todos}  updateTodo={this.updateTodo} deleteTodo={this.deleTodo} />
+      <Inp type={type}  todoss={todos}  updateTodo={this.updateTodo} deleteTodo={this.deleTodo} doubleClick ={this.doubleClick} />
       <Footer todoss={todos} changeAll={this.changeAll}  type={type} deleteAll = {this.deleteAll}  changeType = {this.changeType}/>
     </div>
     )

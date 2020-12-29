@@ -6,21 +6,24 @@ export default class Inp extends Component {
     static PropType = {
         todoss:PropType.array.isRequired,
         updateTodo:PropType.func.isRequired,
-        deleteTodo:PropType.func.isRequired
+        deleteTodo:PropType.func.isRequired,
+        doubleClick:PropType.func.isRequired,
     }
-    // doubleClickAll=(inp)=>{
-    //     this.props.doubleClickAllone(inp)
-    // }
-    
-
     render() {
-        const {todoss,updateTodo,deleteTodo,type,inp} = this.props
+        const {todoss,updateTodo,deleteTodo,type,doubleClick} = this.props
         return (
             <div className='Inp-box'>
                 <ul className='Inp-box-ul'>
                    {
                        todoss.map((todo)=>{
-                          return  <List key={todo.id} {...todo }  updateTodo={updateTodo} deleteTodo={deleteTodo} type = {type} inp = {inp}/>
+                          return  <List
+                            onItemChange={doubleClick}
+                            key={todo.id}
+                            {...todo }
+                            doubleClick = {doubleClick}
+                            updateTodo={updateTodo}
+                            deleteTodo={deleteTodo}
+                            type={type} />
 
                        })
                    }

@@ -4,11 +4,27 @@
     height: 100px;
     text-align: center;
     line-height: 100px;
-    font-size: 48px;
+    font-size: 30px;
     margin-top: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     /* border: 1px solid red; */
-    background: linear-gradient(to right, rgb(245, 0, 171),#fff, rgb(0, 255, 191));
+    /* background: linear-gradient(to right, rgb(245, 0, 171),#fff, rgb(0, 255, 191)); */
+    /* -webkit-background-clip: text; */
+    
+    color: #fff;
+}
+.span1{
+    background:linear-gradient(to right, red, blue);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.span2{
+    background:linear-gradient(to right, rgb(164, 250, 4), rgb(63, 146, 255));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.span3{
+    background:linear-gradient(to right, rgb(134, 101, 252), rgb(206, 7, 179));
     -webkit-background-clip: text;
     color: transparent;
 }

@@ -7,21 +7,23 @@
     /* border: 1px solid black; */
 }
 .Footer-box span{
-
+    padding: 5px;
+    padding-bottom: 8px;
     border: transparent 1px solid;
     margin-right: 20px;
 }
 .Footer-box .Footer-span1{
-    margin-left: 30px;
-    margin-right: 15px;
+    color: #aec4bd;
+    margin-left: 23px;
+    margin-right: 13px;
 }
 .Footer-button{
     float: right;
     border-radius: 4px;
     outline: none;
     border: none;
-    color: #ff0101;
-    font-weight: 900;
+    color: #a09d96;
+    font-weight: 100;
     background-color: transparent;
     margin-top: 33px;
     
@@ -31,12 +33,16 @@
 }
 
 .footer-span-border:hover{
-    
-    border: 1px solid beige;
+   
+    padding: 5px;
+    padding-bottom: 8px;
+    border-radius: 5px;
+    border: 1px solid gold;
 }
 .Footer-button:hover{
     text-decoration: underline;
 }
 .footer-stron{
-    color: rgb(255, 0, 0);
+    margin-right: 5px;
+    color: rgb(168, 140, 170);
 }
