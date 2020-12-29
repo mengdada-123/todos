@@ -1,118 +1,96 @@
 import React, { Component } from 'react'
 import './index.css'
 export default class List extends Component {
-     state = {
-        mouse:false,
-        inp:false
-    }
-    handleMouse=(falg)=>{
-        return()=>{
-            // console.log(falg);
-            this.setState({mouse:falg})
-        }
-        
+	state = {
+		mouse: false,
+		inp: false
+	}
 
-    }
-    handleCheck=(id)=>{
-        return(event)=>{
-            this.props.updateTodo(id,event.target.checked)
-        }
-        
-    }
-    handleDelete =(id)=>{
-        if(window.confirm('确定删除吗？')){
-            this.props.deleteTodo(id)
-        }
-        
-    }
+	autofocusAll = React.createRef()
+
+	handleMouse = (falg) => {
+		return () => {
+			// console.log(falg);
+			this.setState({ mouse: falg })
+		}
 
 
-    // 双击事件后input框显示出来
-    doubleClickAll=()=>{
-    //    const {id} = this.props;
-    //    this.props.doubleClick(id)
-       const {inp} = this.state
-       const towinp = !inp
-       this.setState({
-           inp:towinp
-       })
-     
+	}
+	handleCheck = (id, event) => {
+		this.props.updateTodo(id, event.target.checked)
+	}
+	handleDelete = (id) => {
+		if (window.confirm('确定删除吗？')) {
+			this.props.deleteTodo(id)
+		}
 
-    }
+	}
 
-    onChangeAll=()=>{
-        const {inp} = this.state
-        const towinp = !inp
-        this.setState({
-            inp:towinp
-        })
-      
-        
 
-    }
-    onChangeFocus=()=>{
-        console.log(123);
-    }
+	// 双击事件后input框显示出来
+	doubleClickAll = () => {
+		const { inp } = this.state
+		const towinp = !inp
+		// this.autofocus.focus
+		this.setState({
+			inp: towinp
+		})
+		setTimeout(()=>{
+			this.autofocusAll.current.focus()
+		},0)
+	}
 
-    onTextChange = (e, id) =>{
-        this.onChangeFocus()
-        const {onItemChange} = this.props;
-        onItemChange(e.target.value,id)
-        // console.log(id);
-    }
+	onChangeAll = () => {
+		const { inp } = this.state
+		const towinp = !inp
+		this.setState({
+			inp: towinp
+		})
 
-    render() {
-        const {id,name,done,type} = this.props
-        const {inp} = this.state
-        // console.log(name);
-        if( type=='All'){
-            return (
-                <li className='List-list' style={{backgroundColor:this.state.mouse ? '' : '#000'}} onDoubleClick={this.doubleClickAll} onMouseLeave={this.handleMouse(false)} onMouseEnter={this.handleMouse(true)}>
-                    <label>
-                    <input type="checkbox" onChange={this.handleCheck(id)}  checked={done}/>
-                    <span  className={inp == false ? 'block' : 'none'} style={{textDecoration:done==true ? 'line-through': '',color:done===true?'#f00':'#FFF',color:this.state.mouse?'#00FFFF':''}}>
-                        {name}
-                    </span>
-                    <input className={inp == true ? 'block List-input-text' : 'none'}  value={name} type="text" onChange={(e) => this.onTextChange(e, id)} onBlur={this.onChangeAll} />
 
-                    </label>
-                    <button className='List-list-button' onClick={()=>{this.handleDelete(id)}}  style={{ display:this.state.mouse ? 'block' : '' }} >删 除</button>
-                </li>
-             )
-        }else if (type === 'active' && done === false) {
-            return (
-                <li className='List-list' style={{backgroundColor:this.state.mouse ? '' : '#000'}} onDoubleClick={this.doubleClickAll} onMouseLeave={this.handleMouse(false)} onMouseEnter={this.handleMouse(true)}>
-                <label>
-                <input type="checkbox" onChange={this.handleCheck(id)}  checked={done}/>
-                <span className={inp == false ? 'block' : 'none'} style={{textDecoration:done==true ? 'line-through': '',color:done===true?'#f00':'#FFF',color:this.state.mouse?'#00FFFF':''}}>
-                    {name}
-                </span>
-                <input className={inp == true ? 'block List-input-text' : 'none'} value={name}  type="text" onChange={(e) => this.onTextChange(e, id)} onBlur={this.onChangeAll} onFocus={this.onChangeFocus}/>
+	}
+	onChangeFocus = () => {
+		// console.log(123);
+	}
 
-                </label>
-                <button className='List-list-button' onClick={()=>{this.handleDelete(id)}}  style={{ display:this.state.mouse ? 'block' : '' }} >删 除</button>
-            </li>
-            )
-            
-        }else if(type==='completedAir' && done === true){
-            return(
-                <li className='List-list' style={{backgroundColor:this.state.mouse ? '' : '#000'}} onDoubleClick={this.doubleClickAll} onMouseLeave={this.handleMouse(false)} onMouseEnter={this.handleMouse(true)}>
-                <label>
-                <input type="checkbox" onChange={this.handleCheck(id)}  checked={done}/>
-                <span className={inp == false ? 'block' : 'none'} style={{textDecoration:done==true ? 'line-through': '',color:done===true?'#f00':'#FFF',color:this.state.mouse?'#00FFFF':''}}>
-                    {name}
-                </span>
-                <input className={inp == true ? 'block List-input-text' : 'none'} value={name}  type="text" onChange={(e) => this.onTextChange(e, id)} onBlur={this.onChangeAll} onFocus={this.onChangeFocus}/>
+	onTextChange = (e, id) => {
+		this.onChangeFocus()
+		const { onItemChange } = this.props;
+		onItemChange(e.target.value, id)
+	}
 
-                </label>
-                <button className='List-list-button' onClick={()=>{this.handleDelete(id)}}  style={{ display:this.state.mouse ? 'block' : '' }} >删 除</button>
-            </li>
-            )
 
-        }
-        else{
-            return  null
-        }
-      
-    }
+
+	render() {
+		const { id, name, done, type } = this.props
+		const { inp } = this.state
+		return (
+			<li className='List-list' 
+			style={{ backgroundColor: this.state.mouse ? '' : '#000' }}
+			 onDoubleClick={this.doubleClickAll}
+			 onMouseLeave={this.handleMouse(false)}
+			 onMouseEnter={this.handleMouse(true)}>
+				<label>
+					<input type="checkbox" onChange={(e) => this.handleCheck(id, e)} checked={done} />
+					<span className={inp === false ? 'block' : 'none'}
+						style={{ textDecoration: done === true ? 'line-through' : '',
+						 color: done === true ? '#f00' : '#FFF', 
+						 color: this.state.mouse ? '#00FFFF' : '' }}>
+						{name}
+					</span>
+					<input className={inp === true ? 'block List-input-text' : 'none'}
+					value={name}
+					type="text"
+					onChange={(e) => this.onTextChange(e, id)}
+					onBlur={this.onChangeAll} 
+					ref={this.autofocusAll}
+					/>
+
+				</label>
+				<button className='List-list-button'
+				 onClick={() => { this.handleDelete(id) }} 
+				 style={{ display: this.state.mouse ? 'block' : '' }} >删 除</button>
+			</li>
+		)
+	}
 }
